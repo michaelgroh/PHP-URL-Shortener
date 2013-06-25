@@ -28,8 +28,10 @@ define('TRACK', FALSE);
 // check if URL exists first
 define('CHECK_URL', FALSE);
 
-// change the shortened URL allowed characters
-define('ALLOWED_CHARS', '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
+// Change the shortened URL allowed characters.
+// Does not include similar characters and is randomized to make shortened URLs
+// seem more random.
+define('ALLOWED_CHARS', 'D6SMf5aHJygbNjwkudQpqKesTnRr8Zv7xAVz3YXh4BFC9E2PWLctmUG');
 
 // do you want to cache?
 define('CACHE', TRUE);
