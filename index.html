@@ -13,8 +13,8 @@ Options All -Indexes
 
 &lt;IfModule mod_rewrite.c&gt;
 RewriteEngine On
-RewriteRule ^shorten/(.*)$ shorten.php?longurl=$1 [L]
-RewriteRule ^([0-9a-zA-Z]{1,6})$ redirect.php?url=$1 [L]
+RewriteRule ^shorten/(.*)$ /shorten.php?longurl=$1 [L]
+RewriteRule ^([0-9a-zA-Z]{1,255})$ /redirect.php?url=$1 [L]
 &lt;/IfModule&gt;
 </pre>
 
