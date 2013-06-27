@@ -32,9 +32,3 @@ define('CHECK_URL', FALSE);
 // Does not include similar characters, upper case characters and is
 // randomized to make shortened URLs seem more random.
 define('ALLOWED_CHARS', '6f5aygbjwkudpqesnr8v7xz3h492ctm');
-
-// do you want to cache?
-define('CACHE', TRUE);
-
-// if so, where will the cache files be stored? (include trailing slash)
-define('CACHE_DIR', dirname(__FILE__) . '/cache/');
