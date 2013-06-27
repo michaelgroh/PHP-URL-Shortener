@@ -34,11 +34,12 @@ if(!empty($url_to_shorten) && preg_match('|^https?://|', $url_to_shorten))
 	}
 	
 	// check if the URL has already been shortened
-	$already_shortened = mysql_result(mysql_query('SELECT id FROM ' . DB_TABLE. ' WHERE long_url="' . mysql_real_escape_string($url_to_shorten) . '"'), 0, 0);
-	if(!empty($already_shortened))
+	$queryResult = mysql_query('SELECT id FROM ' . DB_TABLE. ' WHERE long_url="' . mysql_real_escape_string($url_to_shorten) . '"');
+	
+	if(mysql_affected_rows() == 1)
 	{
 		// URL has already been shortened
-		$shortened_url = getShortenedURLFromID($already_shortened);
+		$shortened_url = getShortenedURLFromID(mysql_result($queryResult, 0, 0));
 	}
 	else
 	{
@@ -60,6 +61,7 @@ function getShortenedURLFromID ($integer, $base = ALLOWED_CHARS)
         if ($integer < $length) {
                 $out = $base[$integer];
         } else {
+        	$out = '';
                 for($exp=0; pow($length, $exp)<=$integer; $exp++) {
                         $out = $base[(floor($integer/pow($length, $exp)))%$length] . $out;
                 }
