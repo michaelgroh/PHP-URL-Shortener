@@ -45,7 +45,10 @@ if(!empty($url_to_shorten) && preg_match('|^https?://|', $url_to_shorten))
 		// URL not in database, insert
 		mysql_query('LOCK TABLES ' . DB_TABLE . ' WRITE;');
 		mysql_query('INSERT INTO ' . DB_TABLE . ' (long_url, created, creator) VALUES ("' . mysql_real_escape_string($url_to_shorten) . '", "' . time() . '", "' . mysql_real_escape_string($_SERVER['REMOTE_ADDR']) . '")');
-		$shortened_url = getShortenedURLFromID(mysql_insert_id());
+		$insertId = mysql_insert_id();
+		$shortened_url = getShortenedURLFromID($insertId);
+		// Update the DB with the URL we just generated
+		mysql_query('UPDATE ' . DB_TABLE . " SET url = '" . mysql_real_escape_string($shortened_url) . "' WHERE id = " . $insertId);
 		mysql_query('UNLOCK TABLES');
 	}
 	echo BASE_HREF . $shortened_url;
