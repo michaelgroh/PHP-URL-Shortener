@@ -29,9 +29,9 @@ define('TRACK', FALSE);
 define('CHECK_URL', FALSE);
 
 // Change the shortened URL allowed characters.
-// Does not include similar characters and is randomized to make shortened URLs
-// seem more random.
-define('ALLOWED_CHARS', 'D6SMf5aHJygbNjwkudQpqKesTnRr8Zv7xAVz3YXh4BFC9E2PWLctmUG');
+// Does not include similar characters, upper case characters and is
+// randomized to make shortened URLs seem more random.
+define('ALLOWED_CHARS', '6f5aygbjwkudpqesnr8v7xz3h492ctm');
 
 // do you want to cache?
 define('CACHE', TRUE);
